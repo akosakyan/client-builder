@@ -1,0 +1,36 @@
+@use "~src/styles/breakpoints";
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.client-form-stepper-page-container {
+  padding: 16px;
+
+  .client-form-stepper {
+    border-radius: 4px;
+
+    .client-form-step-loading-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .client-form-stepper-actions-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+
+    .client-form-stepper-actions {
+      width: 500px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  @media #{breakpoints.$mat-xs} {
+    padding: 8px;
+  }
+}

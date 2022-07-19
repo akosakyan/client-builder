@@ -1,0 +1,37 @@
+.created-client-page-container {
+  padding: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 20px;
+
+  .widget-container {
+
+    .widget-card .mat-card-header {
+      align-items: center;
+    }
+
+    .mat-list-item {
+      .field {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .field-name {
+          font-weight: 400;
+          color: #ffc107; // todo
+        }
+
+        .field-value {
+          font-weight: 500;
+        }
+      }
+    }
+
+    .mat-divider {
+      border-top-width: 2px;
+      border-top-style: solid;
+    }
+  }
+}

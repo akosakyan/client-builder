@@ -1,0 +1,43 @@
+<button
+  #triggerButton
+  mat-stroked-button
+  class="upload-btn mb-10"
+  type="button"
+  color="primary"
+>
+  {{ buttonText }}
+  <mat-icon>upload</mat-icon>
+</button>
+
+<div [hidden]="true">
+  <input
+    type="file"
+    #fileInput
+    [attr.multiple]="null"
+    [accept]="allowedFormats"
+  />
+</div>
+
+<ng-container #imageSlot> </ng-container>
+
+<ng-template #imageTmp let-context="context">
+  <div class="img-container">
+    <div class="clear" matTooltip="remove">
+      <button
+        mat-icon-button
+        color="primary"
+        class="mat-elevation-z15"
+        (click)="onRemoveImage()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <img
+      [src]="context.src"
+      [alt]="context.alt"
+      [width]="context.width"
+      [height]="context.height"
+    />
+  </div>
+</ng-template>

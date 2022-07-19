@@ -1,0 +1,55 @@
+<form class="client-form" [formGroup]="addressFormGroup">
+  <mat-form-field>
+    <mat-label>Index</mat-label>
+    <input matInput formControlName="index">
+    <mat-error>{{ addressFormGroup.controls.index.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Country</mat-label>
+    <mat-select formControlName="country">
+      <mat-select-trigger>
+        {{ addressFormGroup.controls.country.value | mapper:getCountryNameFn }}
+      </mat-select-trigger>
+      <cdk-virtual-scroll-viewport [itemSize]="42" [minBufferPx]="5 * 42" [maxBufferPx]="10 * 42" [style.height.px]="5 * 42">
+        <mat-option *cdkVirtualFor="let country of countries" [value]="country.isoCode">
+          <div class="country-option">
+            <span>{{ country.name }}</span>
+            <span>{{ country.flag }}</span>
+          </div>
+        </mat-option>
+      </cdk-virtual-scroll-viewport>
+    </mat-select>
+    <mat-error>{{ addressFormGroup.controls.country.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Area</mat-label>
+    <input matInput formControlName="area">
+    <mat-error>{{ addressFormGroup.controls.area.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>City</mat-label>
+    <mat-select formControlName="city" (openedChange)="onCitiesSelectOpenedChange($event)">
+      <cdk-virtual-scroll-viewport [itemSize]="42" [minBufferPx]="5 * 42" [maxBufferPx]="10 * 42" [style.height.px]="5 * 42">
+        <mat-option *cdkVirtualFor="let city of cities" [value]="city.name">
+          {{ city.name }}
+        </mat-option>
+      </cdk-virtual-scroll-viewport>
+    </mat-select>
+    <mat-error>{{ addressFormGroup.controls.city.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Street</mat-label>
+    <input matInput formControlName="street">
+    <mat-error>{{ addressFormGroup.controls.street.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>House</mat-label>
+    <input matInput formControlName="house">
+    <mat-error>{{ addressFormGroup.controls.house.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+</form>

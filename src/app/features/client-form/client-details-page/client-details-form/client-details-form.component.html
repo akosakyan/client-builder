@@ -1,0 +1,58 @@
+<form class="client-form" [formGroup]="detailsFormGroup">
+  <mat-form-field>
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="lastName">
+    <mat-error>{{ detailsFormGroup.controls.lastName.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+    <mat-error>{{ detailsFormGroup.controls.name.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Date Of Birth</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-hint align="end">18+</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker [disabled]="false"></mat-datepicker>
+    <mat-error>{{ detailsFormGroup.controls.dateOfBirth.errors | formErrorMsg:dateOfBirthErrorMsgMap }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Phone Number</mat-label>
+    <telephone-input required formControlName="phoneNumber"></telephone-input>
+    <mat-icon matSuffix>call</mat-icon>
+    <mat-hint>Include area code</mat-hint>
+    <mat-error>{{ detailsFormGroup.controls.phoneNumber.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Gender</mat-label>
+    <input matInput formControlName="gender">
+    <mat-error>{{ detailsFormGroup.controls.gender.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Client Group</mat-label>
+    <mat-select multiple formControlName="clientGroup">
+      <mat-option *ngFor="let clientGroup of clientGroups" [value]="clientGroup">
+        {{ clientGroup }}
+      </mat-option>
+    </mat-select>
+    <mat-error>{{ detailsFormGroup.controls.clientGroup.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Coordinator</mat-label>
+    <mat-select formControlName="coordinator">
+      <mat-option *ngFor="let coordinator of coordinators" [value]="coordinator">
+        {{ coordinator }}
+      </mat-option>
+    </mat-select>
+    <mat-error>{{ detailsFormGroup.controls.coordinator.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+
+  <mat-checkbox class="example-margin">Do not send SMS</mat-checkbox>
+</form>

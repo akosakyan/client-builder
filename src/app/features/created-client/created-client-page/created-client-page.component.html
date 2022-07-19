@@ -1,0 +1,183 @@
+<section class="created-client-page-container">
+
+  <div class="widget-container">
+    <mat-card class="widget-card">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>person_4</mat-icon>
+        </div>
+        <mat-card-title>Profile</mat-card-title>
+      </mat-card-header>
+      <mat-list>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">First Name</span>
+            <span class="field-value">{{ client.name }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Last Name</span>
+            <span class="field-value">{{ client.lastName }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Middle Name</span>
+            <span class="field-value">{{ client.middleName }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Date Of Birth</span>
+            <span class="field-value">{{ client.dateOfBirth | date:'longDate' }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Phone Number</span>
+            <span class="field-value">{{ client.phoneNumber | mapper:phoneNumberOneLinerFn }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Gender</span>
+            <span class="field-value">{{ client.gender }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Client Group</span>
+            <span class="field-value">{{ client.clientGroup }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Coordinator</span>
+            <span class="field-value">{{ client.coordinator }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Send SMS</span>
+            <span class="field-value">{{ client.sendSMS ? 'Yes' : 'No' }}</span>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card>
+  </div>
+
+  <div class="widget-container">
+    <mat-card class="widget-card">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>home</mat-icon>
+        </div>
+        <mat-card-title>Address</mat-card-title>
+      </mat-card-header>
+      <mat-list>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Index</span>
+            <span class="field-value">{{ address.index }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Country</span>
+            <span class="field-value">{{ address.country }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Area</span>
+            <span class="field-value">{{ address.area }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">City</span>
+            <span class="field-value">{{ address.city }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Street</span>
+            <span class="field-value">{{ address.street }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">House</span>
+            <span class="field-value">{{ address.house }}</span>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card>
+  </div>
+
+  <div class="widget-container">
+    <mat-card class="widget-card">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>fingerprint</mat-icon>
+        </div>
+        <mat-card-title>Identity Verification</mat-card-title>
+      </mat-card-header>
+      <mat-list>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Document Type</span>
+            <span class="field-value">{{ identity.documentType }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Series</span>
+            <span class="field-value">{{ identity.series }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Number</span>
+            <span class="field-value">{{ identity.number }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Issued By</span>
+            <span class="field-value">{{ identity.issuedBy }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <div class="field">
+            <span class="field-name">Date Of Issue</span>
+            <span class="field-value">{{ identity.dateOfIssue | date:'shortDate' }}</span>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+
+        </mat-list-item>
+      </mat-list>
+    </mat-card>
+  </div>
+
+</section>

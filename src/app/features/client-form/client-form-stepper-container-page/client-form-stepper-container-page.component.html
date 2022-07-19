@@ -1,0 +1,49 @@
+<section class="client-form-stepper-page-container">
+  <mat-stepper
+    class="client-form-stepper"
+    #clientFormStepper
+    [linear]="true"
+    [selectedIndex]="selectedStepIndex"
+    [orientation]="$any(stepperOrientation$ | async)"
+    [animationDuration]="'200ms'"
+    (selectionChange)="onStepperSelectionChange($event)"
+    (animationDone)="onStepperAnimationDone()"
+  >
+    <mat-step
+      *ngFor="let step of steps; let index = index; trackBy: trackByFn"
+      [label]="step.stepLabel"
+      [stepControl]="selectedStepControl"
+      [optional]="false"
+      [editable]="true"
+    >
+      <div *ngIf="stepComponentLoading" class="client-form-step-loading-container">
+        <mat-spinner [diameter]="100" [strokeWidth]="5"></mat-spinner>
+      </div>
+      <div *ngIf="selectedStepIndex === index">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-step>
+  </mat-stepper>
+
+  <div class="client-form-stepper-actions-container">
+    <div class="client-form-stepper-actions">
+      <button
+        mat-stroked-button
+        color="primary"
+        [style.visibility]="selectedStepIndex > 0 ? 'visible' : 'hidden'"
+        (click)="onBackBtnClick()"
+      >
+        Back <mat-icon>navigate_before</mat-icon>
+      </button>
+
+      <!-- [style.visibility]="selectedStepIndex < steps.length - 1 ? 'visible' : 'hidden'" -->
+      <button
+        mat-stroked-button
+        color="primary"
+        (click)="onNextBtnClick()"
+      >
+        Next <mat-icon>navigate_next</mat-icon>
+      </button>
+    </div>
+  </div>
+</section>

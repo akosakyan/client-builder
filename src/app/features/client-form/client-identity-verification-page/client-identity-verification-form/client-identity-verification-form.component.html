@@ -1,0 +1,40 @@
+<form class="client-form" [formGroup]="identityFormGroup">
+  <mat-form-field>
+    <mat-label>Document Type</mat-label>
+    <mat-select formControlName="documentType">
+      <mat-option *ngFor="let documentType of documentTypes" [value]="documentType">
+        {{ documentType }}
+      </mat-option>
+    </mat-select>
+    <mat-error>{{ identityFormGroup.controls.documentType.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Series</mat-label>
+    <input matInput formControlName="series">
+    <mat-error>{{ identityFormGroup.controls.series.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Number</mat-label>
+    <input matInput type="number" formControlName="number">
+    <mat-error>{{ identityFormGroup.controls.number.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Issued By</mat-label>
+    <input matInput formControlName="issuedBy">
+    <mat-error>{{ identityFormGroup.controls.issuedBy.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Date Of Issue</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="dateOfIssue">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker [disabled]="false"></mat-datepicker>
+    <mat-error>{{ identityFormGroup.controls.dateOfIssue.errors | formErrorMsg }}</mat-error>
+  </mat-form-field>
+
+  <app-file-uploader (imageFileChange)="onImageFileChange($event)"></app-file-uploader>
+</form>
